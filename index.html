@@ -75,6 +75,15 @@
 
 <body>
 
+    <script>
+        // 🔒 BLOQUEIO COM SENHA (RODA ANTES DE TUDO)
+        let senha = prompt("Digite a senha:");
+
+        if (senha !== "arthurenic3966") {
+            document.body.innerHTML = "<h1 style='color:#c084ff'>Acesso negado</h1>";
+        }
+    </script>
+
     <h1 id="titulo">você me ama?</h1>
 
     <div class="botoes" id="botoes">
@@ -83,6 +92,11 @@
     </div>
 
     <script>
+
+        // 🚫 se errou a senha, não executa nada
+        if (document.body.innerText.includes("Acesso negado")) {
+            throw new Error("Bloqueado");
+        }
 
         let cliquesNao = 0;
         let popupsAbertos = 0;
@@ -124,7 +138,7 @@
             popup.style.boxShadow = "0 0 25px #4c00cc";
             popup.style.zIndex = "999";
             popup.style.background = "black";
-            popup.style.cursor = "move"; // 👈 indica que pode arrastar
+            popup.style.cursor = "move";
 
             popup.innerHTML = `
                 <div style="
@@ -156,7 +170,6 @@
                 </div>
             `;
 
-            // 👇 lógica de arrastar
             let offsetX = 0, offsetY = 0, segurando = false;
 
             popup.addEventListener("mousedown", (e) => {
